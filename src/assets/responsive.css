@@ -1,0 +1,28 @@
+/* 响应式样式 */
+@media (max-width: 1200px) {
+  .video-item,
+  .testimonial-item,
+  .shop-card,
+  .link-group {
+    flex: 0 0 calc(50% - 1.25rem) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .video-item,
+  .testimonial-item,
+  .shop-card,
+  .link-group,
+  .footer-logo,
+  .footer-links {
+    flex: 0 0 100% !important;
+  }
+  
+  .site-header .container {
+    flex-direction: column !important;
+  }
+  
+  .header-image {
+    display: none !important;
+  }
+}
