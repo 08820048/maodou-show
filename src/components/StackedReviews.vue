@@ -381,65 +381,98 @@ onMounted(() => {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 1rem; /* 减少与卡片的间距 */
-  gap: 1.5rem; /* 增加按钮之间的间距 */
+  margin-top: 2rem; /* 增加与卡片的间距 */
+  gap: 2rem; /* 增加按钮之间的间距 */
+  padding: 1rem;
+  border-radius: 35px;
+  background: rgba(255, 255, 255, 0.05); /* 轻微背景 */
+  backdrop-filter: blur(10px);
+  box-shadow: 
+    0 10px 30px -10px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .nav-button {
   background: none;
   border: none;
-  width: 48px; /* 增加按钮大小 */
-  height: 48px; /* 增加按钮大小 */
+  width: 60px; /* 增加按钮大小 */
+  height: 60px; /* 增加按钮大小 */
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  color: var(--text-color);
-  background-color: var(--bg-color);
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 添加阴影效果 */
+  color: #3b82f6; /* 改为亮蓝色 */
+  background-color: rgba(255, 255, 255, 0.1); /* 半透明背景 */
+  backdrop-filter: blur(10px); /* 毛玻璃效果 */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .nav-button:hover:not(:disabled) {
-  background-color: var(--primary-color);
+  background-color: #3b82f6; /* 使用相同的蓝色 */
   color: white;
-  transform: scale(1.1);
+  transform: scale(1.1) translateY(-2px);
+  box-shadow: 
+    0 10px 15px -3px rgba(59, 130, 246, 0.3), /* 添加带颜色的阴影 */
+    0 4px 6px -2px rgba(59, 130, 246, 0.2),
+    inset 0 2px 0 rgba(255, 255, 255, 0.2);
+}
+
+.nav-button:active:not(:disabled) {
+  transform: scale(0.95) translateY(0);
 }
 
 .nav-button:disabled {
   opacity: 0.3;
   cursor: not-allowed;
+  transform: none;
 }
 
 .nav-button svg {
-  width: 24px; /* 增加图标大小 */
-  height: 24px; /* 增加图标大小 */
+  width: 28px; /* 增加图标大小 */
+  height: 28px; /* 增加图标大小 */
+  stroke-width: 2.5; /* 加粗图标线条 */
+  transition: transform 0.3s ease;
+}
+
+.nav-button:hover:not(:disabled) svg {
+  transform: scale(1.1);
 }
 
 .pagination {
-  font-size: 1.1rem; /* 增大字体 */
-  color: var(--text-color);
-  min-width: 70px; /* 增加宽度 */
+  font-size: 1.2rem; /* 增大字体 */
+  color: #3b82f6; /* 改为亮蓝色 */
+  min-width: 80px; /* 增加宽度 */
   text-align: center;
-  font-weight: 500; /* 增加字重 */
-  background-color: var(--bg-color); /* 添加背景色 */
-  padding: 0.5rem 0.8rem; /* 添加内边距 */
-  border-radius: 20px; /* 添加圆角 */
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08); /* 添加阴影 */
+  font-weight: 600; /* 加粗字体 */
+  background-color: rgba(255, 255, 255, 0.1); /* 半透明背景 */
+  backdrop-filter: blur(10px); /* 毛玻璃效果 */
+  padding: 0.6rem 1.2rem; /* 增加内边距 */
+  border-radius: 25px; /* 增加圆角 */
+  box-shadow: 
+    0 4px 6px -1px rgba(59, 130, 246, 0.2), /* 添加带颜色的阴影 */
+    0 2px 4px -1px rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.2); /* 添加带颜色的边框 */
+  transition: all 0.3s ease;
 }
 
-.usage-hint {
-  margin-top: 1.5rem;
-  text-align: center;
-  color: var(--text-light);
-  font-size: 1rem; /* 增大字体 */
-  font-style: italic;
-  background-color: var(--bg-color); /* 添加背景色 */
-  padding: 0.8rem 1.5rem; /* 添加内边距 */
-  border-radius: 30px; /* 添加圆角 */
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05); /* 添加阴影 */
-  display: inline-block; /* 使其仅占据必要的宽度 */
+/* 深色模式适配 */
+:deep(.dark-mode) .nav-button {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-color: rgba(59, 130, 246, 0.3); /* 深色模式下使用蓝色边框 */
+  color: #60a5fa; /* 深色模式下使用更亮的蓝色 */
+}
+
+:deep(.dark-mode) .pagination {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-color: rgba(59, 130, 246, 0.3); /* 深色模式下使用蓝色边框 */
+  color: #60a5fa; /* 深色模式下使用更亮的蓝色 */
 }
 
 /* 全屏查看模态框 */
@@ -526,12 +559,6 @@ onMounted(() => {
   max-height: 80vh;
   border-radius: 8px;
   box-shadow: var(--box-shadow);
-}
-
-/* 深色模式适配 */
-:deep(.dark-mode) .review-card {
-  background-color: var(--card-bg);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 /* 响应式设计 */
